@@ -30,7 +30,7 @@ class Main extends React.Component {
     }
 
     onTextChange(e) {
-
+        e.preventDefault();
         this.setState({
             ...this.state,
             studentId: e.target.value
@@ -98,10 +98,8 @@ class Main extends React.Component {
         return (
             <div>
                 <Nav/>
-                <br/>
-                <br/>
                 <div className="row">
-                    <div className="columns small-centered small-12 medium-6">
+                    <div className="columns small-12 medium-6">
                         <span id="preCanvas" className="canvas">
                             <img width={width} height={height}
                                  id="baseImage"
@@ -112,14 +110,15 @@ class Main extends React.Component {
                         </span>
                         <span id="canvas"></span>
                     </div>
-                </div>
 
-                <div className="row">
-                    <div className="columns small-centered small-12 medium-6">
+                    <div className="columns  small-12 medium-6">
+                        <br/>
+                        <br/>
+                        <br/>
                         <div className="input-group">
                             <div className="input-group-button">
                                 <label htmlFor="fileUpload" className="button">
-                                   เลือกรูป
+                                    เลือกรูป
                                 </label>
                                 <input onChange={this.onImageUpload.bind(this)} type="file" id="fileUpload" className="show-for-sr"/>
                             </div>
@@ -129,14 +128,18 @@ class Main extends React.Component {
                                    ref="studentId"
                                    placeholder="ใส่รหัสนักศึกษา"/>
                         </div>
-
+                        {renderDownloadButton()}
                     </div>
+                </div>
+
+                <div className="row">
+
 
                 </div>
 
                 <div className="row">
                     <div className="columns small-centered small-12 medium-6">
-                    {renderDownloadButton()}
+
                     </div>
                 </div>
             </div>
