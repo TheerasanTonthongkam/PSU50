@@ -85,9 +85,6 @@ class Main extends React.Component {
 
         let {imageToShow, width, height, imageToDownload, studentId} = this.state;
 
-        let marginTop = -1 * (height/2);
-        let marginLeft = -1 * (width/2);
-
         let canvasHeight = $('#preCanvas').height();
 
         let top = (canvasHeight - height)/2;
@@ -110,19 +107,7 @@ class Main extends React.Component {
             <div>
                 <Nav/>
                 <div className="row">
-                    <div className="columns small-12 medium-6">
-                        <span id="preCanvas" className="canvas">
-                            <img width={width} height={height}
-                                 id="baseImage"
-                                 src={imageToShow}
-                                 style={style}/>
-                            <img className="frame" src="/img/frame.png"/>
-                            <span id="student-id">{studentId}</span>
-                        </span>
-                        <span id="canvas"></span>
-                    </div>
-
-                    <div className="columns  small-12 medium-6">
+                    <div className="columns  small-12 medium-6 medium-push-6">
                         <br/>
                         <br/>
                         <br/>
@@ -140,6 +125,18 @@ class Main extends React.Component {
                                    placeholder="ใส่รหัสนักศึกษา"/>
                         </div>
                         {renderDownloadButton()}
+                    </div>
+
+                    <div className="columns small-12 medium-6 medium-pull-6">
+                        <br/>
+                        <span id="preCanvas" className="canvas">
+                            <img width={width} height={height}
+                                 id="baseImage"
+                                 src={imageToShow}
+                                 style={style}/>
+                            <img className="frame" src="/img/frame.png"/>
+                            <span id="student-id">{studentId}</span>
+                        </span>
                     </div>
                 </div>
 
