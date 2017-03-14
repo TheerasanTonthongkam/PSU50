@@ -7,11 +7,10 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            imageToShow: '',
             file: '',
             imageToDownload: '',
-            width:1000,
-            height:1000,
+            width:633,
+            height:633,
             studentId: ''
         }
     }
@@ -38,6 +37,14 @@ class Main extends React.Component {
 
         this.generateCanvas();
 
+    }
+
+    componentDidMount() {
+        console.log("Update");
+        this.setState({
+            ...this.state,
+            imageToShow: '/img/default.png'
+        });
     }
 
     onImageUpload(e) {
@@ -81,11 +88,16 @@ class Main extends React.Component {
         let marginTop = -1 * (height/2);
         let marginLeft = -1 * (width/2);
 
+        let canvasHeight = $('#preCanvas').height();
+
+        let top = (canvasHeight - height)/2;
+        if (top < 0) {
+            top = 0;
+        }
+        console.log(canvasHeight, top);
+
         let style = {
-          marginTop: marginTop,
-            marginLeft: marginLeft,
-            top: '50%',
-            left: '50%'
+            top: top
         };
 
         let renderDownloadButton = () => {
@@ -93,7 +105,6 @@ class Main extends React.Component {
                 return <a href={imageToDownload} download={"image_" + studentId} className="button expanded large">บันทึกรูป</a>
             }
         };
-
 
         return (
             <div>
